@@ -439,8 +439,17 @@ def test_over_or_equal():
 
 
 def test_between():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.between(1, 0, 2)
+    assert is_that.between(1, 0, 2)
+    assert is_that.between(0, -1, 1)
+    assert is_that.between(0.1, 0, 0.2)
+    assert is_that.between(4, -2, 42)
+    assert not is_that.between("0", 0, 1)
+    assert not is_that.between("1", 0, 0)
+    assert not is_that.between(2, 2, 2)
+    assert not is_that.between(0, 0, 1)
+    assert not is_that.between(0, 0.0, 1.0)
+    assert not is_that.between(0, "1.0", "test")
 
 
 def test_between_or_equal():
