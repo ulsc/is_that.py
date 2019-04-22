@@ -84,6 +84,7 @@ def test_a_bytes():
 
 
 def test_a_bytearray():
+    assert is_that.a_bytearray(bytearray("test", "utf-8"))
     assert is_that.a_bytearray(bytearray(b"test"))
     assert is_that.a_bytearray(bytearray([0, 1, 2]), bytearray(True), bytearray(b"test"))
     assert not is_that.a_bytearray(bytearray(b"test"), b"test", "test")
