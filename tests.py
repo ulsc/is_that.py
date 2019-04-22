@@ -261,8 +261,13 @@ def test_true():
 
 
 def test_false():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.true(0 != 0)
+    assert is_that.true(0 != 0, False, 0 == 1)
+    assert is_that.true(False)
+    assert not is_that.true(True)
+    assert not is_that.true(0 == 0)
+    assert not is_that.true(0)
+    assert not is_that.true("test")
 
 
 def test_none():
