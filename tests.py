@@ -156,8 +156,14 @@ def test_a_range():
 
 
 def test_a_memoryview():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.a_memoryview(memoryview(bytearray([0, 1, 2])))
+    assert is_that.a_memoryview(memoryview(bytearray(True)), memoryview(bytearray("test", "utf-8")))
+    assert is_that.a_memoryview(memoryview(bytearray(b"test")), memoryview(bytearray(False)))
+    assert not is_that.a_memoryview(bytearray(b"test"))
+    assert not is_that.a_memoryview(bytearray("test", "utf-8"))
+    assert not is_that.a_memoryview(True)
+    assert not is_that.a_memoryview(True, "test", 0)
+    assert not is_that.a_memoryview(True, False, 0, 1)
 
 
 def test_a_date():
