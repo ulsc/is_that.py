@@ -216,11 +216,11 @@ def a_timedelta(value, *args):
             return False
 
 
-def a_tzinfo(value, *args):
+def a_timezone(value, *args):
     if not args:
-        return isinstance(value, datetime.tzinfo)
+        return isinstance(value, datetime.timezone)
     else:
-        if isinstance(value, datetime.tzinfo):
+        if isinstance(value, datetime.timezone):
             return same_type(value, *args)
         else:
             return False

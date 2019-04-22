@@ -219,9 +219,21 @@ def test_a_timedelta():
     assert not is_that.a_timedelta(True)
 
 
-def test_a_tzinfo():
-    # TODO: FILL ME IN!
-    pass
+def test_a_timezone():
+    assert is_that.a_timezone(datetime.timezone(datetime.timedelta()))
+    assert is_that.a_timezone(datetime.timezone(offset=datetime.timedelta()), datetime.timezone(datetime.timedelta()))
+    assert not is_that.a_timezone(datetime.timedelta())
+    assert not is_that.a_timezone(datetime.timedelta(0))
+    assert not is_that.a_timezone(datetime.timedelta(seconds=42), datetime.timedelta(minutes=42))
+    assert not is_that.a_timezone(datetime.time())
+    assert not is_that.a_timezone(datetime.time(0, 1, 2))
+    assert not is_that.a_timezone(datetime.time(0), datetime.time(0, 1))
+    assert not is_that.a_timezone(datetime.date.today(), datetime.datetime.now())
+    assert not is_that.a_timezone(datetime.datetime.today(), datetime.date.today())
+    assert not is_that.a_timezone(datetime.date.today())
+    assert not is_that.a_timezone(0)
+    assert not is_that.a_timezone("test")
+    assert not is_that.a_timezone(True)
 
 
 def test_a_function():
