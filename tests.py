@@ -144,8 +144,14 @@ def test_a_frozenset():
 
 
 def test_a_range():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.a_range(range(0, 42))
+    assert is_that.a_range(range(0, 42), range(0, 42))
+    assert not is_that.a_range(range(0, 42), ["test1"], ["test2"], "test3")
+    assert not is_that.a_range("")
+    assert not is_that.a_range(True)
+    assert not is_that.a_range(False)
+    assert not is_that.a_range(0)
+    assert not is_that.a_range(0.0)
 
 
 def test_a_memoryview():
