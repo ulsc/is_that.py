@@ -262,9 +262,14 @@ def false(value, *args):
     return False
 
 
-def none(value):
-    # TODO: ARGS!
-    return value is None
+def none(value, *args):
+    if value is not None or not same_type(value, *args):
+        return False
+    if not args:
+        return value is None
+    elif value is None:
+        return same_type(value, *args)
+    return False
 
 
 def same_type(value, *args):

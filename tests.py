@@ -261,18 +261,24 @@ def test_true():
 
 
 def test_false():
-    assert is_that.true(0 != 0)
-    assert is_that.true(0 != 0, False, 0 == 1)
-    assert is_that.true(False)
-    assert not is_that.true(True)
-    assert not is_that.true(0 == 0)
-    assert not is_that.true(0)
-    assert not is_that.true("test")
+    assert is_that.false(0 != 0)
+    assert is_that.false(0 != 0, False, 0 == 1)
+    assert is_that.false(False)
+    assert not is_that.false(True)
+    assert not is_that.false(0 == 0)
+    assert not is_that.false(0)
+    assert not is_that.false("test")
 
 
 def test_none():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.none(None)
+    assert is_that.none(None, None)
+    assert is_that.none(None, None, None)
+    assert not is_that.none(None, 0, None)
+    assert not is_that.none(True)
+    assert not is_that.none(0 == 0)
+    assert not is_that.none(0)
+    assert not is_that.none("test")
 
 
 def test_same_type():
