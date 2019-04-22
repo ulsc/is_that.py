@@ -384,8 +384,15 @@ def test_zero():
 
 
 def test_under():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.under(0, 1)
+    assert is_that.under(-1, 0)
+    assert is_that.under(0, 0.1)
+    assert is_that.under(-2, 4)
+    assert not is_that.under("0", 1)
+    assert not is_that.under(1, "2")
+    assert not is_that.under(0, -1)
+    assert not is_that.under(0, 0.0)
+    assert not is_that.under(0, "1.0")
 
 
 def test_under_or_equal():
