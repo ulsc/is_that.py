@@ -426,6 +426,8 @@ def between(value, check_min, check_max):
 
 
 def between_or_equal(value, check_min, check_max):
+    if a_complex(value) or a_complex(check_min) or a_complex(check_max):
+        return False
     if a_number(value) and a_number(check_min) and a_number(check_max):
         return check_max >= value >= check_min
     else:

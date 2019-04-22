@@ -453,8 +453,19 @@ def test_between():
 
 
 def test_between_or_equal():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.between_or_equal(1, 0, 2)
+    assert is_that.between_or_equal(1, 0, 2)
+    assert is_that.between_or_equal(1, 1, 2)
+    assert is_that.between_or_equal(2, 1, 2)
+    assert is_that.between_or_equal(2, 2, 2)
+    assert is_that.between_or_equal(0, -1, 1)
+    assert is_that.between_or_equal(0.1, 0, 0.2)
+    assert is_that.between_or_equal(4, -2, 42)
+    assert not is_that.between_or_equal("0", 0, 1)
+    assert not is_that.between_or_equal("1", 0, 0)
+    assert not is_that.between_or_equal(0, 1, 1)
+    assert not is_that.between_or_equal(-0.1, 0.0, 1.0)
+    assert not is_that.between_or_equal(0, "1.0", "test")
 
 
 def test_multiple_of():
