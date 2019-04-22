@@ -241,6 +241,15 @@ def test_a_function():
     pass
 
 
+def test_an_exception():
+    assert is_that.an_exception(Exception())
+    assert is_that.an_exception(Exception(), Exception())
+    assert not is_that.an_exception(Exception(), 0)
+    assert not is_that.an_exception(Exception(), True)
+    assert not is_that.an_exception(True)
+    assert not is_that.an_exception("test")
+
+
 def test_true():
     # TODO: FILL ME IN!
     pass
