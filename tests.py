@@ -300,14 +300,18 @@ def test_equal():
 
 def test_even():
     assert is_that.even(0)
+    assert is_that.even(0, 0.0, 2, 4)
     assert is_that.even(2)
     assert is_that.even(2.0)
     assert is_that.even(-2)
+    assert is_that.even(-2, 0, 2, -42.0, 42.0)
     assert not is_that.even(1)
     assert not is_that.even(2.0000000001)
+    assert not is_that.even(2, 2.0000000001, 2)
+    assert not is_that.even(2, True)
     assert not is_that.even(True)
     assert not is_that.even(False)
-    assert not is_that.even([])
+    assert not is_that.even(2, [])
 
 
 def test_odd():

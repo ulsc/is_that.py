@@ -290,13 +290,21 @@ def equal(value, *args):
     return True
 
 
-def even(value):
-    # TODO: ARGS!
-    if isinstance(value, int) and not isinstance(value, bool):
-        return value % 2 == 0
-    elif isinstance(value, float) and value.is_integer():
-        return int(value) % 2 == 0
-    return False
+def even(value, *args):
+    if isinstance(value, bool):
+        return False
+    elif not isinstance(value, int) and not (isinstance(value, float) and value.is_integer()):
+        return False
+    elif int(value) % 2 != 0:
+        return False
+    for arg in args:
+        if isinstance(arg, bool):
+            return False
+        elif not isinstance(arg, int) and not (isinstance(arg, float) and arg.is_integer()):
+            return False
+        elif int(arg) % 2 != 0:
+            return False
+    return True
 
 
 def odd(value):
