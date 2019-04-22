@@ -193,8 +193,15 @@ def test_a_datetime():
 
 
 def test_a_time():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.a_time(datetime.time())
+    assert is_that.a_time(datetime.time(0, 1, 2))
+    assert is_that.a_time(datetime.time(0), datetime.time(0, 1))
+    assert not is_that.a_time(datetime.date.today(), datetime.datetime.now())
+    assert not is_that.a_time(datetime.datetime.today(), datetime.date.today())
+    assert not is_that.a_time(datetime.date.today())
+    assert not is_that.a_time(0)
+    assert not is_that.a_time("test")
+    assert not is_that.a_time(True)
 
 
 def test_a_timedelta():
