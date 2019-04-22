@@ -390,6 +390,8 @@ def under(value, check):
 
 
 def under_or_equal(value, check):
+    if a_complex(value) or a_complex(check):
+        return False
     if a_number(value) and a_number(check):
         return value <= check
     else:

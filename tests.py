@@ -396,8 +396,17 @@ def test_under():
 
 
 def test_under_or_equal():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.under_or_equal(0, 0)
+    assert is_that.under_or_equal(0, 1)
+    assert is_that.under_or_equal(-1, 0)
+    assert is_that.under_or_equal(0, 0.1)
+    assert is_that.under_or_equal(-2, 4)
+    assert not is_that.under_or_equal("0", 0)
+    assert not is_that.under_or_equal("0", 1)
+    assert not is_that.under_or_equal(1, "2")
+    assert not is_that.under_or_equal(0, -1)
+    assert not is_that.under_or_equal(0.1, 0.0)
+    assert not is_that.under_or_equal(0, "1.0")
 
 
 def test_over():
