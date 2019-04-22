@@ -205,8 +205,18 @@ def test_a_time():
 
 
 def test_a_timedelta():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.a_timedelta(datetime.timedelta())
+    assert is_that.a_timedelta(datetime.timedelta(0))
+    assert is_that.a_timedelta(datetime.timedelta(seconds=42), datetime.timedelta(minutes=42))
+    assert not is_that.a_timedelta(datetime.time())
+    assert not is_that.a_timedelta(datetime.time(0, 1, 2))
+    assert not is_that.a_timedelta(datetime.time(0), datetime.time(0, 1))
+    assert not is_that.a_timedelta(datetime.date.today(), datetime.datetime.now())
+    assert not is_that.a_timedelta(datetime.datetime.today(), datetime.date.today())
+    assert not is_that.a_timedelta(datetime.date.today())
+    assert not is_that.a_timedelta(0)
+    assert not is_that.a_timedelta("test")
+    assert not is_that.a_timedelta(True)
 
 
 def test_a_tzinfo():
