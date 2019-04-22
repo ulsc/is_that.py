@@ -251,8 +251,13 @@ def test_an_exception():
 
 
 def test_true():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.true(0 == 0)
+    assert is_that.true(0 == 0, True, 0 != 1)
+    assert is_that.true(True)
+    assert not is_that.true(False)
+    assert not is_that.true(0 == 1)
+    assert not is_that.true(0)
+    assert not is_that.true("test")
 
 
 def test_false():
