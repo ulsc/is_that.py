@@ -290,8 +290,12 @@ def test_same_type():
 
 
 def test_equal():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.equal(0)
+    assert is_that.equal(0, 0)
+    assert is_that.equal(True, True)
+    assert not is_that.equal(True, False)
+    assert not is_that.equal(0, False)
+    assert not is_that.equal("test", False)
 
 
 def test_even():

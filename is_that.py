@@ -285,7 +285,7 @@ def equal(value, *args):
     if not args:
         return True
     for arg in args:
-        if value != arg:
+        if value != arg or type(value) != type(arg):
             return False
     return True
 
