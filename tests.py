@@ -471,8 +471,11 @@ def test_between_or_equal():
 def test_multiple_of():
     assert is_that.multiple_of(1, 1)
     assert is_that.multiple_of(2, 1)
-    assert is_that.multiple_of(450, 10)
+    assert is_that.multiple_of(42, 2)
+    assert is_that.multiple_of(420, 20)
     assert not is_that.multiple_of(2, 0)
+    assert not is_that.multiple_of(1, 2)
+    assert not is_that.multiple_of(1, 3)
 
 
 def test_empty():

@@ -435,6 +435,8 @@ def between_or_equal(value, check_min, check_max):
 
 
 def multiple_of(value, check):
+    if a_complex(value) or a_complex(check):
+        return False
     if whole_number(value) and whole_number(check) and not zero(check):
         return value % check == 0
     return False
