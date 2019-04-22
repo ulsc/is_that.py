@@ -176,12 +176,20 @@ def test_a_date():
     assert not is_that.a_date(datetime.datetime.today(), datetime.date.today())
     assert not is_that.a_date(datetime.datetime.now())
     assert not is_that.a_date(0)
+    assert not is_that.a_date("test")
     assert not is_that.a_date(True)
 
 
 def test_a_datetime():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.a_datetime(datetime.datetime.now())
+    assert is_that.a_datetime(datetime.datetime.today(), datetime.datetime.now())
+    assert is_that.a_datetime(datetime.datetime.fromtimestamp(0))
+    assert not is_that.a_datetime(datetime.date.today(), datetime.datetime.now())
+    assert not is_that.a_datetime(datetime.datetime.today(), datetime.date.today())
+    assert not is_that.a_datetime(datetime.date.today())
+    assert not is_that.a_datetime(0)
+    assert not is_that.a_datetime("test")
+    assert not is_that.a_datetime(True)
 
 
 def test_a_time():
