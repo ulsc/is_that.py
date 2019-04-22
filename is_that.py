@@ -307,13 +307,21 @@ def even(value, *args):
     return True
 
 
-def odd(value):
-    # TODO: ARGS!
-    if isinstance(value, int) and not isinstance(value, bool):
-        return value % 2 == 1
-    elif isinstance(value, float) and value.is_integer():
-        return int(value) % 2 == 1
-    return False
+def odd(value, *args):
+    if isinstance(value, bool):
+        return False
+    elif not isinstance(value, int) and not (isinstance(value, float) and value.is_integer()):
+        return False
+    elif int(value) % 2 != 1:
+        return False
+    for arg in args:
+        if isinstance(arg, bool):
+            return False
+        elif not isinstance(arg, int) and not (isinstance(arg, float) and arg.is_integer()):
+            return False
+        elif int(arg) % 2 != 1:
+            return False
+    return True
 
 
 def whole_number(value):

@@ -316,14 +316,18 @@ def test_even():
 
 def test_odd():
     assert is_that.odd(1)
+    assert is_that.odd(1, 1.0, 3, 5)
     assert is_that.odd(3)
     assert is_that.odd(3.0)
     assert is_that.odd(-3)
-    assert not is_that.odd(0)
+    assert is_that.odd(-3, 1, 3, -1.0, 1.0)
     assert not is_that.odd(2)
     assert not is_that.odd(3.0000000001)
+    assert not is_that.odd(3, 3.0000000001, 3)
+    assert not is_that.odd(3, True)
     assert not is_that.odd(True)
-    assert not is_that.odd([])
+    assert not is_that.odd(False)
+    assert not is_that.odd(3, [])
 
 
 def test_whole_number():
