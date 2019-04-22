@@ -332,11 +332,15 @@ def test_odd():
 
 def test_whole_number():
     assert is_that.whole_number(0)
+    assert is_that.whole_number(0, 1, 2, 3)
     assert is_that.whole_number(1)
+    assert is_that.whole_number(1, -1, -3)
     assert is_that.whole_number(-1)
+    assert is_that.whole_number(-1, 0, -1.000)
     assert is_that.whole_number(1.0)
     assert not is_that.whole_number(1.1)
-    assert not is_that.whole_number("")
+    assert not is_that.whole_number(1, 1.1, 2)
+    assert not is_that.whole_number("", 1.1, -2)
 
 
 def test_positive():

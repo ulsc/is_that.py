@@ -324,11 +324,18 @@ def odd(value, *args):
     return True
 
 
-def whole_number(value):
-    # TODO: ARGS!
+def whole_number(value, *args):
     if not a_number(value):
         return False
-    return value % 1 == 0
+    if not args:
+        return value % 1 == 0
+    elif value % 1 == 0:
+        for arg in args:
+            if not a_number(arg) or arg % 1 != 0:
+                return False
+        return True
+    else:
+        return False
 
 
 def positive(value, *args):
