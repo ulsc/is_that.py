@@ -1,3 +1,5 @@
+import datetime
+
 import is_that
 
 
@@ -167,8 +169,14 @@ def test_a_memoryview():
 
 
 def test_a_date():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.a_date(datetime.date.today())
+    assert is_that.a_date(datetime.date.today(), datetime.date(1970, 1, 1))
+    assert is_that.a_date(datetime.date.fromtimestamp(0))
+    assert not is_that.a_date(datetime.date.today(), datetime.datetime.now())
+    assert not is_that.a_date(datetime.datetime.today(), datetime.date.today())
+    assert not is_that.a_date(datetime.datetime.now())
+    assert not is_that.a_date(0)
+    assert not is_that.a_date(True)
 
 
 def test_a_datetime():

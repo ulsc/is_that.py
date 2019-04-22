@@ -177,9 +177,10 @@ def a_memoryview(value, *args):
 
 def a_date(value, *args):
     if not args:
-        return isinstance(value, datetime.date)
+        # Because datetime is_that a subclass of date in Python
+        return isinstance(value, datetime.date) and not isinstance(value, datetime.datetime)
     else:
-        if isinstance(value, datetime.date):
+        if isinstance(value, datetime.date) and not isinstance(value, datetime.datetime):
             return same_type(value, *args)
         else:
             return False
