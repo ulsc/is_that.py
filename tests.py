@@ -282,8 +282,11 @@ def test_none():
 
 
 def test_same_type():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.same_type(0)
+    assert is_that.same_type(0, 0)
+    assert is_that.same_type(True, False)
+    assert not is_that.same_type(0, False)
+    assert not is_that.same_type("test", False)
 
 
 def test_equal():
