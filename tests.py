@@ -555,9 +555,13 @@ def test_contains():
     assert not is_that.contains("42", 4)
 
 
-def test_begins_with():
-    # TODO: FILL ME IN!
-    pass
+def test_startswith():
+    assert is_that.startswith("test", "te")
+    assert is_that.startswith("test", "te", "tes", "t", "test")
+    assert is_that.startswith("", "")
+    assert not is_that.startswith("test", "est")
+    assert not is_that.startswith("test", "")
+    assert not is_that.startswith("", "test")
 
 
 def test_ends_with():

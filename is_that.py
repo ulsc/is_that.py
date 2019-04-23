@@ -533,9 +533,19 @@ def contains(value, *args):
     return True
 
 
-def begins_with(value, check):
-    # TODO: FILL ME IN!
-    pass
+def startswith(value, *args):
+    if not args:
+        return False
+    if not a_string(value, *args):
+        return False
+    for arg in args:
+        if len(value) == 0:
+            if len(arg) != 0:
+                return False
+        else:
+            if not value.startswith(arg) or len(arg) == 0:
+                return False
+    return True
 
 
 def ends_with(value, check):
