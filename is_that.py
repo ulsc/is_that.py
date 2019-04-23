@@ -499,8 +499,15 @@ def uppercase(value, *args):
 
 
 def lowercase(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    if not a_string(value, *args):
+        return False
+    if not value.islower():
+        return False
+    if args:
+        for arg in args:
+            if not arg.islower():
+                return False
+    return True
 
 
 def titlecase(value, *args):

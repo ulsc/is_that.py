@@ -527,8 +527,13 @@ def test_uppercase():
 
 
 def test_lowercase():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.lowercase("test")
+    assert is_that.lowercase("test", "test")
+    assert not is_that.lowercase("TEST")
+    assert not is_that.lowercase("test", "TEST")
+    assert not is_that.lowercase("TEST", "test")
+    assert not is_that.lowercase(True, "test")
+    assert not is_that.lowercase("42", "test")
 
 
 def test_titlecase():
