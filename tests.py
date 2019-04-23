@@ -495,8 +495,15 @@ def test_empty():
 
 
 def test_file_exists():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.file_exists("is_that.py")
+    assert is_that.file_exists("is_that.py", "is_that.py")
+    assert is_that.file_exists("is_that.py", "README.md", "LICENSE")
+    assert not is_that.file_exists("test")
+    assert not is_that.file_exists("test", "is_that.py")
+    assert not is_that.file_exists(0, "is_that.py")
+    assert not is_that.file_exists("is_that.py", "test")
+    assert not is_that.file_exists("is_that.py", [])
+    assert not is_that.file_exists(0, 1)
 
 
 def test_palindrome():

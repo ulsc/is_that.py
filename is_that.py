@@ -458,13 +458,20 @@ def empty(value, *args):
         return True
 
 
-def file_exists(value):
-    # TODO: ARGS!
+def file_exists(value, *args):
+    if not a_string(value, *args):
+        return False
     try:
         open(value, 'r')
-        return True
     except FileNotFoundError:
         return False
+    if args:
+        for arg in args:
+            try:
+                open(arg, 'r')
+            except FileNotFoundError:
+                return False
+    return True
 
 
 def palindrome(value, *args):
