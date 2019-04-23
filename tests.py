@@ -537,8 +537,14 @@ def test_lowercase():
 
 
 def test_titlecase():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.titlecase("Test")
+    assert is_that.titlecase("Test Test", "Test")
+    assert not is_that.titlecase("TEST")
+    assert not is_that.titlecase("test", "TEST")
+    assert not is_that.titlecase("TEST", "test")
+    assert not is_that.titlecase(True, "test")
+    assert not is_that.titlecase("42", "test")
+    assert not is_that.titlecase("TestTest", "Test")
 
 
 def test_contains():
