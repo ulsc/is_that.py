@@ -548,9 +548,19 @@ def startswith(value, *args):
     return True
 
 
-def ends_with(value, check):
-    # TODO: FILL ME IN!
-    pass
+def endswith(value, *args):
+    if not args:
+        return False
+    if not a_string(value, *args):
+        return False
+    for arg in args:
+        if len(value) == 0:
+            if len(arg) != 0:
+                return False
+        else:
+            if not value.endswith(arg) or len(arg) == 0:
+                return False
+    return True
 
 
 # Regex Checks

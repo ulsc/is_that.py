@@ -564,9 +564,13 @@ def test_startswith():
     assert not is_that.startswith("", "test")
 
 
-def test_ends_with():
-    # TODO: FILL ME IN!
-    pass
+def test_endswith():
+    assert is_that.endswith("test", "st")
+    assert is_that.endswith("test", "st", "est", "t", "test")
+    assert is_that.endswith("", "")
+    assert not is_that.endswith("test", "tes")
+    assert not is_that.endswith("test", "")
+    assert not is_that.endswith("", "test")
 
 
 def test_alphanumeric():
