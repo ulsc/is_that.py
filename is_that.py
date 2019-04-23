@@ -487,8 +487,15 @@ def palindrome(value, *args):
 
 
 def uppercase(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    if not a_string(value, *args):
+        return False
+    if not value.isupper():
+        return False
+    if args:
+        for arg in args:
+            if not arg.isupper():
+                return False
+    return True
 
 
 def lowercase(value, *args):

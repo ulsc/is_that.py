@@ -517,8 +517,13 @@ def test_palindrome():
 
 
 def test_uppercase():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.uppercase("TEST")
+    assert is_that.uppercase("TEST", "TEST")
+    assert not is_that.uppercase("test")
+    assert not is_that.uppercase("TEST", "test")
+    assert not is_that.uppercase("test", "TEST")
+    assert not is_that.uppercase(True, "TEST")
+    assert not is_that.uppercase("42", "TEST")
 
 
 def test_lowercase():
