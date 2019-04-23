@@ -523,8 +523,14 @@ def titlecase(value, *args):
 
 
 def contains(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    if not args:
+        return False
+    if not a_string(value, *args):
+        return False
+    for arg in args:
+        if arg not in value:
+            return False
+    return True
 
 
 def begins_with(value, check):

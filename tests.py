@@ -548,8 +548,11 @@ def test_titlecase():
 
 
 def test_contains():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.contains("test", "est")
+    assert is_that.contains("test", "est", "st", "t", "")
+    assert not is_that.contains("est", "test")
+    assert not is_that.contains("test", "Est")
+    assert not is_that.contains("42", 4)
 
 
 def test_begins_with():
