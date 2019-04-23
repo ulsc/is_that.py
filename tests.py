@@ -526,6 +526,11 @@ def test_lowercase():
     pass
 
 
+def test_titlecase():
+    # TODO: FILL ME IN!
+    pass
+
+
 def test_contains():
     # TODO: FILL ME IN!
     pass

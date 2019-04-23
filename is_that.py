@@ -496,6 +496,11 @@ def lowercase(value, *args):
     pass
 
 
+def titlecase(value, *args):
+    # TODO: FILL ME IN!
+    pass
+
+
 def contains(value, *args):
     # TODO: FILL ME IN!
     pass
