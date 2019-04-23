@@ -507,8 +507,13 @@ def test_file_exists():
 
 
 def test_palindrome():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.palindrome("")
+    assert is_that.palindrome("a")
+    assert is_that.palindrome("a", "")
+    assert is_that.palindrome("anna")
+    assert is_that.palindrome("anna", "civic", "kayak")
+    assert not is_that.palindrome("test")
+    assert not is_that.palindrome("test", "anna")
 
 
 def test_uppercase():

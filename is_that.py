@@ -475,8 +475,15 @@ def file_exists(value, *args):
 
 
 def palindrome(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    if not a_string(value, *args):
+        return False
+    if value != value[::-1]:
+        return False
+    if args:
+        for arg in args:
+            if arg != arg[::-1]:
+                return False
+    return True
 
 
 def uppercase(value, *args):
