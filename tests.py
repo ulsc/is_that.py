@@ -574,8 +574,14 @@ def test_endswith():
 
 
 def test_alphanumeric():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.alphanumeric("qwerty")
+    assert is_that.alphanumeric("qwerty", "ytrewq")
+    assert is_that.alphanumeric("QWERTY", "YTREWQ")
+    assert is_that.alphanumeric("QWERTY12345", "54321YTREWQ")
+    assert not is_that.alphanumeric("qwerty_")
+    assert not is_that.alphanumeric("qwerty ", "qwerty")
+    assert not is_that.alphanumeric("qwerty", "qwerty", 0)
+    assert not is_that.alphanumeric(0, "qwerty", "qwerty")
 
 
 def test_email():

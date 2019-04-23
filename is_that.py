@@ -564,13 +564,17 @@ def endswith(value, *args):
 
 
 # Regex Checks
-def alphanumeric(value):
-    # TODO: ARGS!
-    if not a_string(value):
+def alphanumeric(value, *args):
+    if not a_string(value, *args):
         return False
-    if re.compile("[a-zA-Z0-9]+").match(value):
-        return True
-    return False
+    regex = re.compile("^[a-zA-Z0-9]+$")
+    if not regex.match(value):
+        return False
+    if args:
+        for arg in args:
+            if not regex.match(arg):
+                return False
+    return True
 
 
 def email(value):
