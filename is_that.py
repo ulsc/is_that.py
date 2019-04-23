@@ -567,7 +567,7 @@ def endswith(value, *args):
 def alphanumeric(value, *args):
     if not a_string(value, *args):
         return False
-    regex = re.compile("^[a-zA-Z0-9]+$")
+    regex = re.compile(r"^[a-zA-Z0-9]+$")
     if not regex.match(value):
         return False
     if args:
@@ -577,15 +577,17 @@ def alphanumeric(value, *args):
     return True
 
 
-def email(value):
-    # TODO: ARGS!
-    if not a_string(value):
+def email(value, *args):
+    if not a_string(value, *args):
         return False
-    if re.compile(
-            "([a-z0-9!#$%&'*+/=?^_`{|.}~-]+@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)",
-            re.IGNORECASE).match(value):
-        return True
-    return False
+    regex = re.compile(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", re.IGNORECASE)
+    if not regex.match(value):
+        return False
+    if args:
+        for arg in args:
+            if not regex.match(arg):
+                return False
+    return True
 
 
 def btc_address(value):

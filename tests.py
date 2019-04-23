@@ -586,10 +586,14 @@ def test_alphanumeric():
 
 def test_email():
     assert is_that.email("test@test.com")
-    assert is_that.email("TEST@test.com")
-    assert is_that.email("TEST@TEST.com")
-    assert is_that.email("TEST@TEST.COM")
-    assert is_that.email("TeSt@TeSt.CoM")
+    assert is_that.email("TEST@test.com", "test@test.com")
+    assert is_that.email("TEST@TEST.org", "TEST@TEST.NET", "TEST@test.com", "test@test.istanbul")
+    assert is_that.email("TEST@TEST.NET")
+    assert is_that.email("TeSt@TeSt.Co")
+    assert not is_that.email("test@test")
+    assert not is_that.email("test")
+    assert not is_that.email(0)
+    assert not is_that.email("test@testcom", "test")
 
 
 def test_btc_address():
