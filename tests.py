@@ -480,10 +480,15 @@ def test_multiple_of():
 
 def test_empty():
     assert is_that.empty([])
+    assert is_that.empty([], [])
     assert is_that.empty({})
+    assert is_that.empty([], {}, set())
     assert is_that.empty(list())
     assert is_that.empty(dict())
     assert is_that.empty(set())
+    assert not is_that.empty(0)
+    assert not is_that.empty(0, [])
+    assert not is_that.empty([], {"test": "test"}, {42})
     assert not is_that.empty(["test"])
     assert not is_that.empty({"test": "test"})
     assert not is_that.empty({"test"})

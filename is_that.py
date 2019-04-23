@@ -442,12 +442,20 @@ def multiple_of(value, check):
     return False
 
 
-def empty(value):
-    # TODO: ARGS!
-    if not isinstance(value, list) and isinstance(value, dict) and isinstance(value, set):
+def empty(value, *args):
+    if not isinstance(value, list) and not isinstance(value, dict) and not isinstance(value, set):
         return False
-    else:
+    elif not args:
         return len(value) == 0
+    else:
+        if len(value) != 0:
+            return False
+        for arg in args:
+            if not isinstance(arg, list) and not isinstance(arg, dict) and not isinstance(arg, set):
+                return False
+            elif len(arg) != 0:
+                return False
+        return True
 
 
 def file_exists(value):
