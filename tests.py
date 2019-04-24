@@ -597,8 +597,13 @@ def test_email():
 
 
 def test_btc_address():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.btc_address("1F2RGaXR5XUogVEDHfkpTdEQ2Ab5FzFMMV")
+    assert is_that.btc_address("1F2RGaXR5XUogVEDHfkpTdEQ2Ab5FzFMMV", "1F2RGaXR5XUogVEDHfkpTdEQ2Ab5FzFMMV")
+    assert not is_that.btc_address("1F2RGaXR5XUogVEDHfkpTdEQ2Ab5FzFMMV", "test")
+    assert not is_that.btc_address("test")
+    assert not is_that.btc_address(0)
+    assert not is_that.btc_address(0, "1F2RGaXR5XUogVEDHfkpTdEQ2Ab5FzFMMV")
+    assert not is_that.btc_address("test@testcom", "test")
 
 
 def test_credit_card():

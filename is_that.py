@@ -590,13 +590,18 @@ def email(value, *args):
     return True
 
 
-def btc_address(value):
-    # TODO: ARGS!
-    if not a_string(value):
+def btc_address(value, *args):
+    if not a_string(value, *args):
         return False
-    if re.compile("(?<![a-km-zA-HJ-NP-Z0-9])[13][a-km-zA-HJ-NP-Z0-9]{26,33}(?![a-km-zA-HJ-NP-Z0-9])").match(value):
-        return True
-    return False
+    regex = re.compile(r"^(?<![a-km-zA-HJ-NP-Z0-9])[13][a-km-zA-HJ-NP-Z0-9]{26,33}(?![a-km-zA-HJ-NP-Z0-9])$",
+                       re.IGNORECASE)
+    if not regex.match(value):
+        return False
+    if args:
+        for arg in args:
+            if not regex.match(arg):
+                return False
+    return True
 
 
 def credit_card(value):
