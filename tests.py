@@ -628,8 +628,14 @@ def test_ipv4():
 
 
 def test_ipv6():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.ipv6("1:2:3:4:5:6:7:8")
+    assert is_that.ipv6("1::", "::2:3:4:5:6:7:8")
+    assert is_that.ipv6("fe80::7:8%eth0", "::255.255.255.255", "2001:db8:3:4::192.0.2.33")
+    assert not is_that.ipv6("127.0.01")
+    assert not is_that.ipv6("42")
+    assert not is_that.ipv6("test")
+    assert not is_that.ipv6(True)
+    assert not is_that.ipv6(0)
 
 
 def test_ip():

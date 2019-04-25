@@ -607,9 +607,11 @@ def btc_address(value, *args):
 def credit_card(value, *args):
     if not a_string(value, *args):
         return False
-    regex = re.compile(r"^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|\
-        (6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9\
-    ])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$", re.IGNORECASE)
+    regex = re.compile(r"^(?:(4[0-9]{12}(?:[0-9]{3})?)|"
+                       r"(5[1-5][0-9]{14})|"
+                       r"(6(?:011|5[0-9]{2})[0-9]{12})|"
+                       r"(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|"
+                       r"((?:2131|1800|35[0-9]{3})[0-9]{11}))$", re.IGNORECASE)
     if not regex.match(value):
         return False
     if args:
@@ -633,8 +635,32 @@ def ipv4(value, *args):
 
 
 def ipv6(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    if not a_string(value, *args):
+        return False
+    regex = re.compile(
+        r"(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|"
+        r"([0-9a-fA-F]{1,4}:){1,7}:|"
+        r"([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|"
+        r"([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|"
+        r"([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|"
+        r"([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|"
+        r"([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|"
+        r"[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|"
+        r":((:[0-9a-fA-F]{1,4}){1,7}|:)|"
+        r"fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|"
+        r"::(ffff(:0{1,4})?:)?((25[0-5]|(2[0-4]|"
+        r"1?[0-9])?[0-9])\.){3}(25[0-5]|(2[0-4]|"
+        r"1?[0-9])?[0-9])|"
+        r"([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|"
+        r"(2[0-4]|1?[0-9])?[0-9])\.){3}(25[0-5]|(2[0-4]|"
+        r"1?[0-9])?[0-9]))")
+    if not regex.match(value):
+        return False
+    if args:
+        for arg in args:
+            if not regex.match(arg):
+                return False
+    return True
 
 
 def ip(value, *args):
