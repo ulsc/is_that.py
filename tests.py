@@ -676,8 +676,11 @@ def test_tckn():
 
 
 def test_social_security_number():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.social_security_number("001245565")
+    assert is_that.social_security_number("001245565", "001-23-1000", "120-00-1200")
+    assert not is_that.social_security_number("12121212121")
+    assert not is_that.social_security_number(True)
+    assert not is_that.social_security_number(0)
 
 
 def test_url():

@@ -720,8 +720,16 @@ def tckn(value, *args):
 
 
 def social_security_number(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    if not a_string(value, *args):
+        return False
+    regex = re.compile(r"^(?!000|.+0{4})(?:\d{9}|\d{3}-\d{2}-\d{4})$")
+    if not regex.match(value):
+        return False
+    if args:
+        for arg in args:
+            if not regex.match(arg):
+                return False
+    return True
 
 
 def url(value, *args):
