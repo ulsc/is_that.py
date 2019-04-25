@@ -617,8 +617,14 @@ def test_credit_card():
 
 
 def test_ipv4():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.ipv4("127.0.0.1")
+    assert is_that.ipv4("127.0.0.1", "192.168.1.1")
+    assert is_that.ipv4("127.0.0.1", "192.168.1.1", "10.0.0.1")
+    assert not is_that.ipv4("127.0.01")
+    assert not is_that.ipv4("42")
+    assert not is_that.ipv4("test")
+    assert not is_that.ipv4(True)
+    assert not is_that.ipv4(0)
 
 
 def test_ipv6():
