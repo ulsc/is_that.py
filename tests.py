@@ -658,8 +658,13 @@ def test_ip():
 
 
 def test_hex_color():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.hex_color("#000000")
+    assert is_that.hex_color("#000000", "#FFFFFF")
+    assert is_that.hex_color("#000000", "#FFFFFF", "#FfFfFf")
+    assert not is_that.hex_color("000000", "#FFFFFF", "#FfFfFf")
+    assert not is_that.hex_color("test")
+    assert not is_that.hex_color(True)
+    assert not is_that.hex_color(0)
 
 
 def test_social_security_number():

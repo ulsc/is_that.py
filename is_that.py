@@ -694,8 +694,16 @@ def ip(value, *args):
 
 
 def hex_color(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    if not a_string(value, *args):
+        return False
+    regex = re.compile(r"^#(?:[0-9a-fA-F]{3}){1,2}$")
+    if not regex.match(value):
+        return False
+    if args:
+        for arg in args:
+            if not regex.match(arg):
+                return False
+    return True
 
 
 def social_security_number(value, *args):
