@@ -639,8 +639,22 @@ def test_ipv6():
 
 
 def test_ip():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.ip("127.0.0.1")
+    assert is_that.ip("127.0.0.1", "192.168.1.1")
+    assert is_that.ip("127.0.0.1", "192.168.1.1", "10.0.0.1")
+    assert is_that.ip("1:2:3:4:5:6:7:8")
+    assert is_that.ip("1::", "::2:3:4:5:6:7:8")
+    assert is_that.ip("fe80::7:8%eth0", "::255.255.255.255", "2001:db8:3:4::192.0.2.33")
+    assert not is_that.ip("127.0.01")
+    assert not is_that.ip("42")
+    assert not is_that.ip("test")
+    assert not is_that.ip(True)
+    assert not is_that.ip(0)
+    assert not is_that.ip("127.0.01")
+    assert not is_that.ip("42")
+    assert not is_that.ip("test")
+    assert not is_that.ip(True)
+    assert not is_that.ip(0)
 
 
 def test_hex_color():

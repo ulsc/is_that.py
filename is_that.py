@@ -664,8 +664,33 @@ def ipv6(value, *args):
 
 
 def ip(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    if not a_string(value, *args):
+        return False
+    regex = re.compile(
+        r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|"
+        r"(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|"
+        r"([0-9a-fA-F]{1,4}:){1,7}:|"
+        r"([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|"
+        r"([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|"
+        r"([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|"
+        r"([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|"
+        r"([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|"
+        r"[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|"
+        r":((:[0-9a-fA-F]{1,4}){1,7}|:)|"
+        r"fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]+|"
+        r"::(ffff(:0{1,4})?:)?((25[0-5]|(2[0-4]|"
+        r"1?[0-9])?[0-9])\.){3}(25[0-5]|(2[0-4]|"
+        r"1?[0-9])?[0-9])|"
+        r"([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|"
+        r"(2[0-4]|1?[0-9])?[0-9])\.){3}(25[0-5]|(2[0-4]|"
+        r"1?[0-9])?[0-9]))$")
+    if not regex.match(value):
+        return False
+    if args:
+        for arg in args:
+            if not regex.match(arg):
+                return False
+    return True
 
 
 def hex_color(value, *args):
