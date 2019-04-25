@@ -607,8 +607,13 @@ def test_btc_address():
 
 
 def test_credit_card():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.credit_card("4242424242424242")
+    assert is_that.credit_card("4242424242424242", "4242424242424242")
+    assert not is_that.credit_card("4242 4242 4242 4242")
+    assert not is_that.credit_card("4242-4242-4242-4242")
+    assert not is_that.credit_card("")
+    assert not is_that.credit_card(True)
+    assert not is_that.credit_card(0)
 
 
 def test_ipv4():

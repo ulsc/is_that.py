@@ -604,13 +604,19 @@ def btc_address(value, *args):
     return True
 
 
-def credit_card(value):
-    # TODO: ARGS!
-    if not a_string(value):
+def credit_card(value, *args):
+    if not a_string(value, *args):
         return False
-    if re.compile("((?:(?:\\d{4}[- ]?){3}\\d{4}|\\d{15,16}))(?![\\d])").match(value):
-        return True
-    return False
+    regex = re.compile(r"^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|\
+        (6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9\
+    ])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$", re.IGNORECASE)
+    if not regex.match(value):
+        return False
+    if args:
+        for arg in args:
+            if not regex.match(arg):
+                return False
+    return True
 
 
 def ipv4(value, *args):
