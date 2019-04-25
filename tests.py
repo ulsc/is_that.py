@@ -667,6 +667,14 @@ def test_hex_color():
     assert not is_that.hex_color(0)
 
 
+def test_tckn():
+    assert is_that.tckn("12121212121")
+    assert is_that.tckn("12121212121", "12121212121")
+    assert not is_that.tckn("test")
+    assert not is_that.tckn(True)
+    assert not is_that.tckn(0)
+
+
 def test_social_security_number():
     # TODO: FILL ME IN!
     pass

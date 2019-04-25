@@ -706,6 +706,19 @@ def hex_color(value, *args):
     return True
 
 
+def tckn(value, *args):
+    if not a_string(value, *args):
+        return False
+    regex = re.compile(r"^[1-9][0-9]{10}$")
+    if not regex.match(value):
+        return False
+    if args:
+        for arg in args:
+            if not regex.match(arg):
+                return False
+    return True
+
+
 def social_security_number(value, *args):
     # TODO: FILL ME IN!
     pass
