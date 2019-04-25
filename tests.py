@@ -694,8 +694,13 @@ def test_url():
 
 
 def test_us_zip_code():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.us_zip_code("12345")
+    assert is_that.us_zip_code("12345", "12345-6789")
+    assert is_that.us_zip_code("12345", "12345-6789", "12345 6789")
+    assert not is_that.us_zip_code("12345", "test")
+    assert not is_that.us_zip_code("test")
+    assert not is_that.us_zip_code(True)
+    assert not is_that.us_zip_code(0)
 
 
 def test_future():

@@ -735,8 +735,7 @@ def social_security_number(value, *args):
 def url(value, *args):
     if not a_string(value, *args):
         return False
-    regex = re.compile(
-        r"^(http[s]?://[www.]?)?[a-z0-9]+([\-.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?")
+    regex = re.compile(r"^(http[s]?://[www.]?)?[a-z0-9]+([\-.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?")
     if not regex.match(value):
         return False
     if args:
@@ -747,8 +746,16 @@ def url(value, *args):
 
 
 def us_zip_code(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    if not a_string(value, *args):
+        return False
+    regex = re.compile(r"^(\d{5})([- ])?(\d{4})?$")
+    if not regex.match(value):
+        return False
+    if args:
+        for arg in args:
+            if not regex.match(arg):
+                return False
+    return True
 
 
 # Date Checks
