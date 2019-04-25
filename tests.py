@@ -684,8 +684,13 @@ def test_social_security_number():
 
 
 def test_url():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.url("ulascengiz.com")
+    assert is_that.url("www.ulascengiz.com", "https://ulascengiz.com")
+    assert is_that.url("ulascengiz.com/denklem", "https://www.ulascengiz.com")
+    assert not is_that.url("htts://ulascengiz.com")
+    assert not is_that.url("test")
+    assert not is_that.url(True)
+    assert not is_that.url(0)
 
 
 def test_us_zip_code():
