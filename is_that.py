@@ -638,7 +638,7 @@ def ipv6(value, *args):
     if not a_string(value, *args):
         return False
     regex = re.compile(
-        r"(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|"
+        r"^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|"
         r"([0-9a-fA-F]{1,4}:){1,7}:|"
         r"([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|"
         r"([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|"
@@ -653,7 +653,7 @@ def ipv6(value, *args):
         r"1?[0-9])?[0-9])|"
         r"([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|"
         r"(2[0-4]|1?[0-9])?[0-9])\.){3}(25[0-5]|(2[0-4]|"
-        r"1?[0-9])?[0-9]))")
+        r"1?[0-9])?[0-9]))$")
     if not regex.match(value):
         return False
     if args:
