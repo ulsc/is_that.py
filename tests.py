@@ -719,8 +719,16 @@ def test_future():
 
 
 def test_past():
-    # TODO: FILL ME IN!
-    pass
+    past_date = datetime.date.today() - datetime.timedelta(42)
+    past_datetime = datetime.datetime.now() - datetime.timedelta(42)
+    assert is_that.past(past_date)
+    assert is_that.past(past_datetime)
+    assert is_that.past(datetime.datetime.now())
+    assert is_that.past(past_date, past_datetime)
+    assert is_that.past(past_date, past_datetime, past_date)
+    assert not is_that.past(datetime.date.today())
+    assert not is_that.past(True)
+    assert not is_that.past(0)
 
 
 def test_in_date_range():

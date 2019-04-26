@@ -777,14 +777,22 @@ def future(value, *args):
     return True
 
 
-def past(value):
-    # TODO: ARGS!
-    if a_date(value):
-        return value < datetime.datetime.now().date()
-    elif a_datetime(value):
-        return value < datetime.datetime.now()
-    else:
+def past(value, *args):
+    if not isinstance(value, datetime.date):
         return False
+    if not args:
+        if isinstance(value, datetime.datetime):
+            return value < datetime.datetime.now()
+        return value < datetime.datetime.now().date()
+    for arg in args:
+        if not isinstance(arg, datetime.date):
+            return False
+        elif isinstance(arg, datetime.datetime):
+            if arg >= datetime.datetime.now():
+                return False
+        elif arg >= datetime.datetime.now().date():
+            return False
+    return True
 
 
 def in_date_range(value, check_min, check_max):
