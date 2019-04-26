@@ -704,8 +704,18 @@ def test_us_zip_code():
 
 
 def test_future():
-    # TODO: FILL ME IN!
-    pass
+    future_date = datetime.date.today() + datetime.timedelta(42)
+    future_datetime = datetime.datetime.now() + datetime.timedelta(42)
+    assert is_that.future(future_date)
+    assert is_that.future(future_datetime)
+    assert is_that.future(future_date, future_datetime)
+    assert is_that.future(future_date, future_datetime, future_date)
+    assert not is_that.future(datetime.date.today())
+    assert not is_that.future(datetime.datetime.now())
+    assert not is_that.future(datetime.date(1970, 1, 1))
+    assert not is_that.future(datetime.datetime(1970, 1, 1))
+    assert not is_that.future(True)
+    assert not is_that.future(0)
 
 
 def test_past():
