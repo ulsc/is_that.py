@@ -790,6 +790,11 @@ def past(value, *args):
         if isinstance(value, datetime.datetime):
             return value < now
         return value < now.date()
+    if isinstance(value, datetime.datetime):
+        if value >= now:
+            return False
+    if value >= now.date():
+        return False
     for arg in args:
         if not isinstance(arg, datetime.date):
             return False
