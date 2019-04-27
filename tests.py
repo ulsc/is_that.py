@@ -723,7 +723,6 @@ def test_past():
     past_datetime = datetime.datetime.now() - datetime.timedelta(42)
     assert is_that.past(past_date)
     assert is_that.past(past_datetime)
-    assert is_that.past(datetime.datetime.now())
     assert is_that.past(past_date, past_datetime)
     assert is_that.past(past_date, past_datetime, past_date)
     assert not is_that.past(datetime.date.today())
@@ -732,8 +731,15 @@ def test_past():
 
 
 def test_in_date_range():
-    # TODO: FILL ME IN!
-    pass
+    past_date = datetime.date.today() - datetime.timedelta(42)
+    past_datetime = datetime.datetime.now() - datetime.timedelta(42)
+    future_date = datetime.date.today() + datetime.timedelta(42)
+    future_datetime = datetime.datetime.now() + datetime.timedelta(42)
+    assert is_that.in_date_range(datetime.date.today(), past_date, future_date)
+    assert is_that.in_date_range(datetime.datetime.now(), past_datetime, future_datetime)
+    assert not is_that.in_date_range(datetime.datetime.now(), past_date, future_datetime)
+    assert not is_that.in_date_range(datetime.datetime.now(), past_datetime, future_date)
+    assert not is_that.in_date_range(True, 0, 0)
 
 
 def test_today():

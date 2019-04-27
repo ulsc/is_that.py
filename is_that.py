@@ -778,19 +778,20 @@ def future(value, *args):
 
 
 def past(value, *args):
+    now = datetime.datetime.now()
     if not isinstance(value, datetime.date):
         return False
     if not args:
         if isinstance(value, datetime.datetime):
-            return value < datetime.datetime.now()
-        return value < datetime.datetime.now().date()
+            return value < now
+        return value < now.date()
     for arg in args:
         if not isinstance(arg, datetime.date):
             return False
         elif isinstance(arg, datetime.datetime):
-            if arg >= datetime.datetime.now():
+            if arg >= now:
                 return False
-        elif arg >= datetime.datetime.now().date():
+        elif arg >= now.date():
             return False
     return True
 
