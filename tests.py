@@ -748,8 +748,16 @@ def test_in_date_range():
 
 
 def test_today():
-    # TODO: FILL ME IN!
-    pass
+    assert is_that.today(datetime.date.today())
+    assert is_that.today(datetime.datetime.now())
+    assert is_that.today(datetime.date.today(), datetime.datetime.now())
+    assert is_that.today(datetime.datetime.now(), datetime.date.today())
+    assert not is_that.today(datetime.datetime(1970, 1, 1), datetime.date.today())
+    assert not is_that.today(datetime.date.today(), datetime.datetime(1970, 1, 1))
+    assert not is_that.today(True)
+    assert not is_that.today(datetime.date.today(), True)
+    assert not is_that.today(0)
+    assert not is_that.today(datetime.date.today(), 0)
 
 
 def test_yesterday():

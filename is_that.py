@@ -814,8 +814,25 @@ def in_date_range(value, check_min, check_max):
 
 
 def today(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    if not isinstance(value, datetime.date):
+        return False
+    if not args:
+        if isinstance(value, datetime.datetime):
+            return value.date() == datetime.date.today()
+        return value == datetime.date.today()
+    if isinstance(value, datetime.datetime):
+        return value.date() == datetime.date.today()
+    elif value != datetime.date.today():
+        return False
+    for arg in args:
+        if not isinstance(arg, datetime.date):
+            return False
+        elif isinstance(arg, datetime.datetime):
+            if arg.date() != datetime.date.today():
+                return False
+        elif arg != datetime.date.today():
+            return False
+    return True
 
 
 def yesterday(value, *args):
