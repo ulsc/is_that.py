@@ -808,7 +808,7 @@ def past(value, *args):
 
 def in_date_range(value, check_min, check_max):
     if (a_date(value) or a_datetime(value)) and same_type(value, check_min, check_max):
-        return check_max > value > check_min
+        return check_max >= value >= check_min
     else:
         return False
 
