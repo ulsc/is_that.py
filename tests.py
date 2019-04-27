@@ -710,6 +710,8 @@ def test_future():
     assert is_that.future(future_datetime)
     assert is_that.future(future_date, future_datetime)
     assert is_that.future(future_date, future_datetime, future_date)
+    assert not is_that.future(future_date, datetime.datetime(1970, 1, 1))
+    assert not is_that.future(datetime.datetime(1970, 1, 1), future_date)
     assert not is_that.future(datetime.date.today())
     assert not is_that.future(datetime.datetime.now())
     assert not is_that.future(datetime.date(1970, 1, 1))

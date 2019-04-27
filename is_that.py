@@ -766,6 +766,11 @@ def future(value, *args):
         if isinstance(value, datetime.datetime):
             return value > datetime.datetime.now()
         return value > datetime.datetime.now().date()
+    if isinstance(value, datetime.datetime):
+        if value <= datetime.datetime.now():
+            return False
+    if value <= datetime.datetime.now().date():
+        return False
     for arg in args:
         if not isinstance(arg, datetime.date):
             return False
