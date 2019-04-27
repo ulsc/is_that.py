@@ -761,8 +761,18 @@ def test_today():
 
 
 def test_yesterday():
-    # TODO: FILL ME IN!
-    pass
+    date_yesterday = datetime.date.today() - datetime.timedelta(1)
+    datetime_yesterday = datetime.datetime.now() - datetime.timedelta(1)
+    assert is_that.yesterday(date_yesterday)
+    assert is_that.yesterday(datetime_yesterday)
+    assert is_that.yesterday(date_yesterday, datetime_yesterday)
+    assert is_that.yesterday(datetime_yesterday, date_yesterday)
+    assert not is_that.yesterday(datetime.datetime(1970, 1, 1), datetime.date.today())
+    assert not is_that.yesterday(datetime.date.today(), datetime.datetime(1970, 1, 1))
+    assert not is_that.yesterday(True)
+    assert not is_that.yesterday(datetime.date.today(), True)
+    assert not is_that.yesterday(0)
+    assert not is_that.yesterday(datetime.date.today(), 0)
 
 
 def test_last_week():

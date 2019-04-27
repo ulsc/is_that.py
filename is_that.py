@@ -836,8 +836,26 @@ def today(value, *args):
 
 
 def yesterday(value, *args):
-    # TODO: FILL ME IN!
-    pass
+    date_yesterday = datetime.date.today() - datetime.timedelta(1)
+    if not isinstance(value, datetime.date):
+        return False
+    if not args:
+        if isinstance(value, datetime.datetime):
+            return value.date() == date_yesterday
+        return value == date_yesterday
+    if isinstance(value, datetime.datetime):
+        return value.date() == date_yesterday
+    elif value != date_yesterday:
+        return False
+    for arg in args:
+        if not isinstance(arg, datetime.date):
+            return False
+        elif isinstance(arg, datetime.datetime):
+            if arg.date() != date_yesterday:
+                return False
+        elif arg != date_yesterday:
+            return False
+    return True
 
 
 def last_week(value, *args):
